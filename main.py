@@ -53,29 +53,57 @@ for key in person:
 
 # Importing sys for test function
 import sys
-
-
-# Custom Test Function
 def test(did_pass):
-    """ Print the result of a test. """
-    linenum = sys._getframe(1).f_lineno  # Get the caller's line number.
-    msg = f"Test at line {linenum} {'PASSED' if did_pass else 'FAILED'}."
-    print(msg)
-
+    """ Print the result of a test fail or not. """
+    linenum = sys._getframe(1).f_lineno
+    if did_pass:
+        print("Test at line", linenum, "ok")
+    else:
+        print("Test at line", linenum, "FAILED.")
 
 # Function 1: count_vowels
-def count_vowels(s: str) -> int:
-    """
-    Count the number of vowels in a string.
+import sys
+def count_vowels(text):
+    vowels = 'aeiouAEIOU'  # All vowels
+    count = 0              # starts at 0
+    for letter in text:    
+        if letter in vowels:  
+            count += 1
+    return count
 
-    Parameters:
-    - s (str): The input string
+def test_count_vowels():
+    test(count_vowels("hello") == 2)
+    test(count_vowels("why") == 0)
+    test(count_vowels("aeiou") == 5)
+    test(count_vowels("") == 0)
+    test(count_vowels("bcdfg") == 0)
+    test(count_vowels("aeiouAEIOU") == 10)
+    test(count_vowels("HELLO") == 2)
+    test(count_vowels("aEiOu") == 5)
+    test(count_vowels("a e i o u") == 5)
+    test(count_vowels("rhythm") == 0)
 
-    Returns:
-    - int: The number of vowels in the string
-    """
-    # TODO: Implement this function
-    pass
+# Function 2: merge_lists
+def merge_lists(list1, list2):
+    result = [] 
+    m=0 # m and g are variables that are assigned to 0 so basically your giving them a starting value
+    g=0
+#Compares the elements
+    while m < len(list1) and g < len(list2):
+        if list1[m] < list2[g]:
+            result.append(list1[m])
+            m+= 1
+        else:
+            result.append(list2[g])
+            g+=1
+    while m <len(list1):
+        result.append(list1[m])
+        m+= 1
+    while g < len(list2):
+        result.append(list2[g])
+        g += 1
+    return result
+
 
 
 # Unit Tests for count_vowels
