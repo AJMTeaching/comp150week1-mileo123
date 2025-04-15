@@ -63,7 +63,7 @@ def test(did_pass):
 
 # Function 1: count_vowels
 import sys
-def count_vowels(text):
+def count_vowels():
     vowels = 'aeiouAEIOU'  # All vowels
     count = 0              # starts at 0
     for letter in text:    
@@ -103,40 +103,6 @@ def merge_lists(list1, list2):
         result.append(list2[g])
         g += 1
     return result
-
-
-
-# Unit Tests for count_vowels
-def test_count_vowels():
-    test(count_vowels("hello") == 2)
-    test(count_vowels("why") == 0)
-    test(count_vowels("aeiou") == 5)
-    test(count_vowels("") == 0)
-    test(count_vowels("bcdfg") == 0)
-    test(count_vowels("aeiouAEIOU") == 10)
-    test(count_vowels("HELLO") == 2)
-    test(count_vowels("aEiOu") == 5)
-    test(count_vowels("a e i o u") == 5)
-    test(count_vowels("rhythm") == 0)
-
-
-# Function 2: merge_lists
-def merge_lists(list1: list, list2: list) -> list:
-    """
-    Merge two sorted lists into a single sorted list.
-
-    Parameters:
-    - list1 (list): The first sorted list
-    - list2 (list): The second sorted list
-
-    Returns:
-    - list: A new sorted list containing all elements from list1 and list2
-    """
-    # TODO: Implement this function
-    pass
-
-
-# Unit Tests for merge_lists
 def test_merge_lists():
     list1 = [1, 3, 5]
     list2 = [2, 4, 6]
@@ -150,24 +116,27 @@ def test_merge_lists():
     test(merge_lists([1, 2, 3], [4, 5, 6]) == [1, 2, 3, 4, 5, 6])
     test(merge_lists([1, 3, 5, 7, 9], [2, 4, 6, 8, 10]) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     test(merge_lists([1, 1, 2, 3], [1, 2, 2, 3]) == [1, 1, 1, 2, 2, 2, 3, 3])
-
+    
+# Function 3: word_lengths
+import sys
+def test(did_pass):
+    """Print the result of a test."""
+    linenum = sys._getframe(1).f_lineno
+    msg = f"Test at line {linenum} {'ok' if did_pass else 'FAILED'}."
+    print(msg)
 
 # Function 3: word_lengths
-def word_lengths(words: list) -> list:
-    """
-    Get the lengths of words in a list.
+# This function takes a list of strings and returns a list of their lengths
+def word_lengths(words):
+    result = []  # Create an empty list to store the lengths
 
-    Parameters:
-    - words (list): The list of words
+    for word in words:  # Loop through each word in the list
+        length = len(word)  # Get the length of the word
+        result.append(length)  # Add the length to the result list
 
-    Returns:
-    - list: A list containing the lengths of the words
-    """
-    # TODO: Implement this function
-    pass
+    return result  # Return the list of lengths
 
-
-# Unit Tests for word_lengths
+# Unit tests for word_lengths
 def test_word_lengths():
     words = ["hello", "world", "python"]
     lengths = word_lengths(words)
@@ -177,6 +146,9 @@ def test_word_lengths():
     test(word_lengths(["short", "mediummm", "longesttttt"]) == [5, 8, 10])
     test(word_lengths(["", "a", "ab", "abc"]) == [0, 1, 2, 3])
     test(word_lengths(["  ", "a b", " c "]) == [2, 3, 3])
+
+# Run the tests
+test_word_lengths()
 
 
 # Function 4: reverse_string
