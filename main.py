@@ -125,16 +125,15 @@ def test(did_pass):
     msg = f"Test at line {linenum} {'ok' if did_pass else 'FAILED'}."
     print(msg)
 
-# Function 3: word_lengths
 # This function takes a list of strings and returns a list of their lengths
 def word_lengths(words):
     result = []  # Create an empty list to store the lengths
 
-    for word in words:  # Loop through each word in the list
-        length = len(word)  # Get the length of the word
+    for word in words:
+        length = len(word) 
         result.append(length)  # Add the length to the result list
 
-    return result  # Return the list of lengths
+    return result
 
 # Unit tests for word_lengths
 def test_word_lengths():
